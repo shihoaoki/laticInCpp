@@ -18,3 +18,24 @@ int Min(int Arr[], int N){
     }
     return min;
 }
+
+void Print(int Arr[], int N){
+    for(int i = 0; i<N; i++){
+        cout << Arr[i] << ", ";
+    }
+    int *Counting_Sort(int Arr[], int N){
+        int max = Max(Arr, N);
+        int *Sorted_Arr = new int[i];
+        int *Count = new int[max-min + 1];
+        
+        for(int i=0; i<N; i++)
+            Count[Arr[i]-min]++;
+        for(int i=1; i<(max-min+1); i++)
+            Count[i] += Count[i-1];
+        for(int i=N-1; i>=0; i--){
+            Sorted_Arr[Count[Arr[i] -min] -1] = Arr[i];
+            Count[Arr[i] - min] --;
+        }
+        return Sorted_Arr;
+    }
+}
